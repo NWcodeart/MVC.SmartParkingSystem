@@ -50,7 +50,7 @@ namespace MVC.SmartParkingSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=ParkingFinder}/{id?}");
+                    pattern: "{controller=Home}/{action=CarFinder}/{id?}");
             });
         }
     }

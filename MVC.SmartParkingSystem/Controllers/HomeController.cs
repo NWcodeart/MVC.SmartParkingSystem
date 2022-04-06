@@ -37,12 +37,7 @@ namespace MVC.SmartParkingSystem.Controllers
                 //Passing service base url
                 client.BaseAddress = new Uri(Baseurl);
 
-                //It clears the default headers that are sent with every request.
-                //These headers are things that are common to all your requests, e.g. Content-Type, Authorization, etc.
-                //client.DefaultRequestHeaders.Clear();
-
-
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient
+                //Sending request to find web api REST service resource GetCompanyParkingById using HttpClient
                 int id = 3;
                 HttpResponseMessage result = await client.GetAsync($"Parking/GetCompanyParkingById/{id}");
 
@@ -57,7 +52,31 @@ namespace MVC.SmartParkingSystem.Controllers
             //return parking list
             return View(parking);
         }
-    
+
+        public async Task<IActionResult> CarFinder(string CarNumber)
+        {
+            string SpaceNumber = "";
+            using (var client = new HttpClient())
+            {
+                //Passing service base url
+                client.BaseAddress = new Uri(Baseurl);
+
+                //Sending request to find web api REST service resource CarFinder using HttpClient
+                CarNumber = "909UAL";
+                HttpResponseMessage result = await client.GetAsync($"Spaces/CarFinder/{CarNumber}");
+
+                //Checking the response is successful or not which is sent using HttpClient
+                if (result.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api
+                    SpaceNumber = result.Content.ReadAsStringAsync().Result;
+
+                }
+            }
+            //return parking list
+            return View(SpaceNumber);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
