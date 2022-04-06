@@ -39,17 +39,19 @@ namespace MVC.SmartParkingSystem.Controllers
 
                 //It clears the default headers that are sent with every request.
                 //These headers are things that are common to all your requests, e.g. Content-Type, Authorization, etc.
-                client.DefaultRequestHeaders.Clear();
+                //client.DefaultRequestHeaders.Clear();
 
 
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient
-                HttpResponseMessage result = await client.GetAsync("GetCompanyParkingById/3");
+                int id = 3;
+                HttpResponseMessage result = await client.GetAsync($"Parking/GetCompanyParkingById/{id}");
 
                 //Checking the response is successful or not which is sent using HttpClient
                 if (result.IsSuccessStatusCode)
                 {
                     //Storing the response details recieved from web api
                     parking = result.Content.ReadAsAsync<ParkingDto>().Result;
+                    
                 }
             }
             //return parking list
