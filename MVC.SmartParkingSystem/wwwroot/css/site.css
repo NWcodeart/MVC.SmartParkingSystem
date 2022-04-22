@@ -1,71 +1,175 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+﻿
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    background-color: #F9F9F9;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.gray-color {
+    background-color: #dedede;
+    z-index: -1;
+    display: flex;
+    overflow-x: scroll;
+    position: fixed;
+    top: 12%;
+    height: 100%;
+    width: 100%;
+}
+
+.Parking-map {
+    width: 454px;
+    height: 700px;
+    /* border: #00529A solid 2px; */
+    top: 110px;
+    position: absolute;
+    padding: 40px;
+}
+
+.parking-top, .parking-bottom {
+    border-right: solid 5px white;
+    width: fit-content;
+    margin: 0px;
+}
+
+.parking-top {
+    border-top: solid 5px white;
+}
+
+.parking-bottom {
+    border-bottom: solid 5px white;
+}
+
+.parking-space {
+    width: 91px;
+    height: 125px;
+    border-left: solid 5px white;
+}
+
+.car {
+    width: 62px;
+    z-index: 1;
+    position: absolute;
+}
+
+#S1, #S4, #S5, #S6 {
+    display: none;
+}
+
+.street {
+    border-top: 5px dashed rgb(0, 0, 0);
+    background-color: #dedede;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.space-block, .space-block-bottom {
+    width: 60px;
+    height: 7px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+    background-color: #595959;
+}
+
+.space-block-bottom {
+    bottom: -71px;
+    position: relative;
+}
+
+.space-number {
+    z-index: -1;
+    position: relative;
+    top: 30%;
+    left: 30%;
+    font-size: x-large;
+    font-family: fantasy;
+    color: #595959;
+}
+
+.header {
+    height: 210px;
+    width: 100%;
+    position: fixed;
+    border-radius: 20px !important;
+    left: 10px;
+    top: -20px;
+}
+
+.logo {
+    width: 66%;
+    margin-left: 17%;
+    margin-right: 17%;
+    margin-top: 10%;
+    margin-bottom: 1%;
+}
+
+.car-finder {
+    border: none;
+    background-color: #00529A;
+    width: 90%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.car-search {
+    border-radius: 30px;
+    width: 80%;
+    border: 5px;
+    margin: 4px;
+    height: 42px;
+}
+
+.search-submit {
+    background-color: #00529A;
+    border: 0px;
+    width: 13%;
+    padding-left: 8px;
+    text-align: left;
+}
+
+.search-icon {
+    color: #fff;
+    font-size: x-large;
+}
+
+.search-note {
+    color: gray;
+    margin: 6%;
+    font-size: 0.85rem;
+}
+
+@media only screen and ( min-width: 500px ) {
+    .header {
+        width: 84%;
+        height: 105px;
+        top: 4%;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+    .logo {
+        margin-left: 8%;
+        margin-top: 5%;
+    }
+
+    .car-finder {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .car-finder {
+        margin-top: 4%;
+        width: 60%;
+        margin-left: 35%;
+    }
+
+    .search-note {
+        margin-left: 39%;
+        margin-right: 1%;
+    }
+
+    .logo {
+        width: 40%;
+        margin-top: 2.7%;
+        margin-left: 6%;
+    }
 }
