@@ -1,5 +1,86 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using MVC.SmartParkingSystem.Models;
 @{
+    var spaces = ViewBag.ParkingList;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/StyleSheete.css">
+    <title>QU parking</title>
+</head>
+<body>
+    <div class="gray-color">
+        <div class="Parking-map">
+            <div class="row parking-top">
+                <div class="col-4 parking-space">
+                    <div class="space-block"></div>
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S1">
+                    <span class="space-number">@spaces.</span>
+                </div>
+                <div class="col-4 parking-space">
+                    <div class="space-block"></div>
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S2">
+                    <span class="space-number">S2</span>
+                </div>
+                <div class="col-4 parking-space">
+                    <div class="space-block"></div>
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S3">
+                    <span class="space-number">S3</span>
+                </div>
+                <div class="col-4 parking-space">
+                    <div class="space-block"></div>
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S4">
+                    <span class="space-number">S4</span>
+                </div>
+            </div>
+            <hr class="street">
+            <div class="row parking-bottom">
+                <div class="col-4 parking-space">
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S5">
+                    <span class="space-number">S5</span>
+                    <div class="space-block-bottom"></div>
+                </div>
+                <div class="col-4 parking-space">
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S6">
+                    <span class="space-number">S6</span>
+                    <div class="space-block-bottom"></div>
+                </div>
+                <div class="col-4 parking-space">
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S7">
+                    <span class="space-number">S7</span>
+                    <div class="space-block-bottom"></div>
+                </div>
+                <div class="col-4 parking-space">
+                    <img src="./Images/2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S8">
+                    <span class="space-number">S8</span>
+                    <div class="space-block-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--nivigation bar -contain parking finder and logo- -->
+    <div class="shadow bg-white row header">
+        <div class=" col-12 col-md-6">
+            <img src="./Images/Qassim_University_logo.svg" alt="Qassim_University_logo" class="logo">
+        </div>
+        <div class="parking-finder col-12 col-md-6 float-end">
+            <form action="get" class="car-finder rounded-pill shadow-sm">
+                <input type="text" class="car-search" placeholder="   Enter your car plate number">
+                <button type="submit" class="search-submit"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+            </form>
+            <span class="search-note">*Enter the number and english letter ex: 123XXX</span>
+        </div>
+    </div>
+    <!-- parking map-->
+    <div>
+
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/66133c9fc6.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>

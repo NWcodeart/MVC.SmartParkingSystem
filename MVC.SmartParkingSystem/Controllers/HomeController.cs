@@ -38,7 +38,7 @@ namespace MVC.SmartParkingSystem.Controllers
                 client.BaseAddress = new Uri(Baseurl);
 
                 //Sending request to find web api REST service resource GetCompanyParkingById using HttpClient
-                int id = 3;
+                int id = 5;
                 HttpResponseMessage result = await client.GetAsync($"Parking/GetCompanyParkingById/{id}");
 
                 //Checking the response is successful or not which is sent using HttpClient
@@ -49,8 +49,17 @@ namespace MVC.SmartParkingSystem.Controllers
                     
                 }
             }
-            //return parking list
-            return View(parking);
+            //var ParkingList = new List<ParkingDto>() { new ParkingDto
+            //{
+            //    Id = parking.Id,
+            //    Name = parking.Name,
+            //    ParkingList = parking.ParkingList.ToList()
+            //} }.ToList();
+
+            //pass parking list to the razor page
+            ViewBag.Parking = parking;
+
+            return View();
         }
 
         public async Task<IActionResult> CarFinder(string CarNumber)
@@ -71,6 +80,10 @@ namespace MVC.SmartParkingSystem.Controllers
                     //Storing the response details recieved from web api
                     SpaceNumber = result.Content.ReadAsStringAsync().Result;
 
+                }
+                else
+                {
+                    SpaceNumber = "car number underfiend!, please check if you write it correct.";
                 }
             }
             //return parking list
