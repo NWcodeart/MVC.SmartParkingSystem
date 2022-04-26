@@ -1,11 +1,15 @@
 ﻿
 @model IEnumerable<SmartParkingSystem.Entity.SpacesDto>;
 
+<style>
+    
+</style>
 <div class="gray-color">
         
     <!-- parking map-->
         <div class="Parking-map">
-            @for(int i = 0; i < Model.Count()-1; i++){
+            @{ 
+                for(int i = 0; i < Model.Count()-1; i++){
             <div class="row parking-top">
                 <div class="col-4 parking-space">
                     <div class="space-block"></div>
@@ -59,7 +63,7 @@
                 </div>
                 @{break; }
             </div>
-            }
+            }}
         </div>
     </div>
 
@@ -69,10 +73,28 @@
             <img src=".\css\Images\Qassim_University_logo.svg" alt="Qassim_University_logo" class="logo">
         </div>
         <div class="parking-finder col-12 col-md-6 float-end">
-            <form action="get" class="car-finder rounded-pill shadow-sm">
-                <input type="text" class="car-search" placeholder="   Enter your car plate number">
-                <button type="submit" class="search-submit"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
-            </form>
+            <div class="car-finder rounded-pill shadow-sm">
+                <input type="text" class="car-search" placeholder="   Enter your car plate number" id="CarNumber">
+                <button type="submit" 
+                        class="search-submit "
+                        onclick="SubmitWithPopup()">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </button>
+            </div>
             <span class="search-note">*Enter the number and english letter ex: 123XXX</span>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="bg-black-hidd"></div>
+    <div class="radius card bg-popup text-center">
+        <!-- close popup -->
+        <button class="back-btn rounded-circle shadow-sm"><i class="fas fa-angle-right"></i></button>
+        <!-- popup content -->
+        <div>
+            <h1>@ViewBag.SpaceNumber</h1>
+        </div>
+        <button class="rounded-pill btn add-btn">close</button>
+    </div>
+
+   

@@ -13,7 +13,41 @@ body {
     height: 100%;
     width: 100%;
 }
+.bg-black-hidd {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    width: 130%;
+    top: 0%;
+    right: -15%;
+    z-index: 1;
+    display: none;
+}
 
+.bg-black-hidd {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    width: 130%;
+    top: 0%;
+    right: -15%;
+    z-index: 1;
+    display: none;
+}
+.red-font {
+    font: #DA1212 bold;
+}
+.bg-popup {
+    background-color: #f8f8f8;
+    position: fixed;
+    height: 74%;
+    width: 84%;
+    top: 13%;
+    right: 7%;
+    left: 7%;
+    z-index: 1;
+    display: none;
+}
 .Parking-map {
     width: 454px;
     height: 700px;

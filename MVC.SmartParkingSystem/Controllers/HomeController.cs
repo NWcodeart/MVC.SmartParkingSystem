@@ -14,7 +14,7 @@ namespace MVC.SmartParkingSystem.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private string SN = "";
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -28,9 +28,13 @@ namespace MVC.SmartParkingSystem.Controllers
             return View();
         }
 
-        //all vacant spaces page 
+        //show all vacant spaces page 
         public async Task<IActionResult> ParkingFinder()
         {
+            //Parking space number - recived from carFinder
+            ViewBag.SpaceParking = SN;
+
+            //parking model
             var parking = new ParkingDto();
             using (var client = new HttpClient())
             {
@@ -54,7 +58,9 @@ namespace MVC.SmartParkingSystem.Controllers
             return View(spaces);
         }
 
-        public async Task<IActionResult> CarFinder(string CarNumber)
+        //call request of the users' car place 
+        [HttpPost]
+        public async Task<ActionResult> CarFinder(string CarNumber)
         {
             string SpaceNumber = "";
             using (var client = new HttpClient())
@@ -63,8 +69,8 @@ namespace MVC.SmartParkingSystem.Controllers
                 client.BaseAddress = new Uri(Baseurl);
 
                 //Sending request to find web api REST service resource CarFinder using HttpClient
-                CarNumber = "909UAL";
-                HttpResponseMessage result = await client.GetAsync($"Spaces/CarFinder/{CarNumber}");
+                int id = 5;
+                HttpResponseMessage result = await client.GetAsync($"Spaces/CarFinder/{CarNumber}/{id}");
 
                 //Checking the response is successful or not which is sent using HttpClient
                 if (result.IsSuccessStatusCode)
@@ -72,14 +78,21 @@ namespace MVC.SmartParkingSystem.Controllers
                     //Storing the response details recieved from web api
                     SpaceNumber = result.Content.ReadAsStringAsync().Result;
 
+                    //carry string with viewBag
+                    ViewBag.Massege = "You are parked your car at:";
+                    ViewBag.style = "";
+                    ViewBag.SpaceNumber = SpaceNumber;
                 }
                 else
                 {
-                    SpaceNumber = "car number underfiend!, please check if you write it correct.";
+                    //bad request
+                    ViewBag.Massege = "car number underfiend!, please check if you write it correct.";
+                    ViewBag.style = "red-font";
+                    ViewBag.SpaceNumber = "Notes: try again without; spaces, arabic letters, or other non english characters";
                 }
+
+                return PartialView("carFinder");
             }
-            //return parking list
-            return View(SpaceNumber);
         }
 
 
