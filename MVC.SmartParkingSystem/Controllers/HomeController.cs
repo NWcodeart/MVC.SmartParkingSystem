@@ -46,20 +46,12 @@ namespace MVC.SmartParkingSystem.Controllers
                 {
                     //Storing the response details recieved from web api
                     parking = result.Content.ReadAsAsync<ParkingDto>().Result;
-                    
+
                 }
             }
-            //var ParkingList = new List<ParkingDto>() { new ParkingDto
-            //{
-            //    Id = parking.Id,
-            //    Name = parking.Name,
-            //    ParkingList = parking.ParkingList.ToList()
-            //} }.ToList();
-
-            //pass parking list to the razor page
-            ViewBag.Parking = parking;
-
-            return View();
+            //pass parking spaces list to the view
+            List<SpacesDto> spaces = parking.ParkingList.ToList();
+            return View(spaces);
         }
 
         public async Task<IActionResult> CarFinder(string CarNumber)

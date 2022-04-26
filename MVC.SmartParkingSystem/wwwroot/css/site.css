@@ -47,9 +47,6 @@ body {
     width: 62px;
     z-index: 1;
     position: absolute;
-}
-
-#S1, #S4, #S5, #S6 {
     display: none;
 }
 
