@@ -55,11 +55,12 @@ namespace MVC.SmartParkingSystem.Controllers
             }
             //pass parking spaces list to the view
             List<SpacesDto> spaces = parking.ParkingList.ToList();
+            var x = spaces.ElementAt(2).IsVacant;
             return View(spaces);
         }
 
         //call request of the users' car place 
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> CarFinder(string CarNumber)
         {
             string SpaceNumber = "";
@@ -79,16 +80,18 @@ namespace MVC.SmartParkingSystem.Controllers
                     SpaceNumber = result.Content.ReadAsStringAsync().Result;
 
                     //carry string with viewBag
-                    ViewBag.Massege = "You are parked your car at:";
-                    ViewBag.style = "";
+                    ViewBag.GoodMassege = "You are parked your car at:";
+                    ViewBag.BadMassege = "";
                     ViewBag.SpaceNumber = SpaceNumber;
+                    ViewBag.note = "";
                 }
                 else
                 {
                     //bad request
-                    ViewBag.Massege = "car number underfiend!, please check if you write it correct.";
-                    ViewBag.style = "red-font";
-                    ViewBag.SpaceNumber = "Notes: try again without; spaces, arabic letters, or other non english characters";
+                    ViewBag.GoodMassege = "";
+                    ViewBag.BadMassege = "car number underfiend!, please check if you write it correct.";
+                    ViewBag.SpaceNumber = "";
+                    ViewBag.note = "Notes: try again without; spaces, arabic letters, or other non english characters";
                 }
 
                 return PartialView("carFinder");

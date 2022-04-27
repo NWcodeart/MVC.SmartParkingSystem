@@ -1,42 +1,53 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+//const { valHooks } = require("jquery");
+
 // Write your JavaScript code.
 
-$(document).ready(function () {
-    console.log("ready!");
-});
-
 function SubmitWithPopup() {
-    console.log("inside SubmitWithPopup");
 
     var carnumber = document.getElementById("CarNumber").value;
-    console.log(carnumber);
 
-    jQuery.ajax({
-        type: "POST",
-        url: '/Home/CarFinder',
-        dataType: 'JSON',
-        data: { CarNumber: carnumber},
-        success: function (data) {
-            console.log(data);
-        },
-        error: function (data) {
-            console.log("error!")
-            console.log(data);
-        }
-    })
+    //pass carNumber to ther controller and call carFinder partial view
+    $.get('/Home/CarFinder', { CarNumber: carnumber }, function (content) {
+        $("#partialContainer").html(content);
+    });
 
     //display popup
-    $(".search-submit").click(function () {
-        console.log("inside click")
-        $('.bg-black-hidd').css("display", 'block');
-        $('.bg-popup').css("display", 'block');
-    });
-
-    //close popup
-    $(".back-btn").click(function () {
-        $('.bg-black-hidd').css("display", 'none');
-        $('.bg-popup').css("display", 'none');
-    });
+    $('.bg-black-hidd').css("display", 'block');
+    $('.bg-popup').css("display", 'block');
 }
+//close popup
+$(".back-btn, .close-btn").click(function () {
+    $('.bg-black-hidd').css("display", 'none');
+    $('.bg-popup').css("display", 'none');
+});
+
+function test() {
+    alert("loaded");
+}
+//disply car
+function CarStatus(isVacant, CarId) {
+    console.log("inside CarStatus");
+    if (isVacant == 'True') {
+        $(CarId).css("display", 'none');
+    } else if (isVacant == 'False') {
+        $(CarId).css("display", 'block');
+    }
+}
+$(document).ready(function () {
+    console.log("document is ready!");
+
+    for (let j = 1; j < 10; j++) {
+        if (j == 4) { continue; }
+        let value = document.getElementById(j).value;
+
+        if (value != null) {
+            let ImgId = '#S' + j;
+            console.log("ImgId = " + ImgId);
+            console.log(value);
+            CarStatus(value, ImgId);
+        }
+    }
+})

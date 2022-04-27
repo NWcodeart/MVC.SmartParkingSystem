@@ -1,4 +1,5 @@
-﻿
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
 @model IEnumerable<SmartParkingSystem.Entity.SpacesDto>;
 
 <style>
@@ -12,26 +13,30 @@
                 for(int i = 0; i < Model.Count()-1; i++){
             <div class="row parking-top">
                 <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="1">
                     <div class="space-block"></div>
-                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S1">
+                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png"  alt="car" class="car" id="S1" >
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                 </div>
                 @{i++;}
                 <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="2">
                     <div class="space-block"></div>
-                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S2">
+                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S2" >
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                 </div>
                 @{i++;}
                 <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="3">
                     <div class="space-block"></div>
-                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S3">
+                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S3" >
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                 </div>
                 @{i++;}
                 <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="5">
                     <div class="space-block"></div>
-                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S4">
+                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S5">
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                 </div>
                 @{i++;}
@@ -39,25 +44,29 @@
             <hr class="street">
             <div class="row parking-bottom">
                 <div class="col-4 parking-space">
-                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S5">
-                    <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
-                    <div class="space-block-bottom"></div>
-                </div>
-                @{i++;}
-                <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="6" type="text">
                     <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S6">
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                     <div class="space-block-bottom"></div>
                 </div>
                 @{i++;}
                 <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="7" type="text">
                     <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S7">
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                     <div class="space-block-bottom"></div>
                 </div>
                 @{i++;}
                 <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="8" type="text">
                     <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S8">
+                    <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
+                    <div class="space-block-bottom"></div>
+                </div>
+                @{i++;}
+                <div class="col-4 parking-space">
+                <input value="@Model.ElementAt(i).IsVacant.ToString()" class="d-none" id="9" type="text">
+                    <img src=".\css\Images\2871_R1NUIEpPUyAwNjctMzc-removebg-preview.png" alt="car" class="car" id="S9">
                     <span class="space-number">@Model.ElementAt(i).ParkingNumber.ToString()</span>
                     <div class="space-block-bottom"></div>
                 </div>
@@ -89,12 +98,11 @@
     <div class="bg-black-hidd"></div>
     <div class="radius card bg-popup text-center">
         <!-- close popup -->
-        <button class="back-btn rounded-circle shadow-sm"><i class="fas fa-angle-right"></i></button>
+        <button class="back-btn rounded-circle back-icon"><i class="fa-solid fa-angle-right "></i></button>
         <!-- popup content -->
-        <div>
-            <h1>@ViewBag.SpaceNumber</h1>
-        </div>
-        <button class="rounded-pill btn add-btn">close</button>
+        <div id="partialContainer" class="p-3"></div>
+        <button class="rounded-pill btn close-btn">close</button>
     </div>
 
+   <script>
    

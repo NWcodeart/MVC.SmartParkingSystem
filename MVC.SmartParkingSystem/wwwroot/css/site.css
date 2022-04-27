@@ -2,7 +2,21 @@
 body {
     background-color: #F9F9F9;
 }
-
+.back-icon {
+    background: #f8f8f8;
+    border: none;
+    float: right;
+    margin: 10px;
+    box-shadow: none;
+    font-size: x-large;
+}
+.popup-content {
+    margin-top: 20%;
+    direction: ltr;
+    text-align: initial;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .gray-color {
     background-color: #dedede;
     z-index: -1;
@@ -35,7 +49,26 @@ body {
     display: none;
 }
 .red-font {
-    font: #DA1212 bold;
+    color: #DA1212;
+    font: inherit;
+    font-family: monospace;
+    font-size: x-large;
+}
+.navy-font {
+    color: #041562;
+    font-size: 6rem;
+    text-align: center;
+    font-family: fantasy;
+}
+.close-btn {
+    background: cadetblue;
+    color: white;
+    top: 70%;
+    left: 37%;
+    right: 37%;
+    position: absolute;
+    font-size: x-large;
+    font-family: monospace;
 }
 .bg-popup {
     background-color: #f8f8f8;
@@ -81,7 +114,7 @@ body {
     width: 62px;
     z-index: 1;
     position: absolute;
-    display: none;
+    display: block;
 }
 
 .street {
