@@ -2,9 +2,6 @@
 @addTagHelper *, AuthoringTagHelpers
 @model IEnumerable<SmartParkingSystem.Entity.SpacesDto>;
 
-<style>
-    
-</style>
 <div class="gray-color">
         
     <!-- parking map-->
@@ -88,6 +85,7 @@
                         class="search-submit "
                         onclick="SubmitWithPopup()">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <i class="fas fa-search search-icon"></i>
                     </button>
             </div>
             <span class="search-note">*Enter the number and english letter ex: 123XXX</span>
@@ -104,5 +102,4 @@
         <button class="rounded-pill btn close-btn">close</button>
     </div>
 
-   <script>
    

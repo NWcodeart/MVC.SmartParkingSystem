@@ -31,9 +31,6 @@ namespace MVC.SmartParkingSystem.Controllers
         //show all vacant spaces page 
         public async Task<IActionResult> ParkingFinder()
         {
-            //Parking space number - recived from carFinder
-            ViewBag.SpaceParking = SN;
-
             //parking model
             var parking = new ParkingDto();
             using (var client = new HttpClient())
@@ -55,7 +52,6 @@ namespace MVC.SmartParkingSystem.Controllers
             }
             //pass parking spaces list to the view
             List<SpacesDto> spaces = parking.ParkingList.ToList();
-            var x = spaces.ElementAt(2).IsVacant;
             return View(spaces);
         }
 

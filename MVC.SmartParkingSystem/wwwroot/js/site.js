@@ -24,9 +24,6 @@ $(".back-btn, .close-btn").click(function () {
     $('.bg-popup').css("display", 'none');
 });
 
-function test() {
-    alert("loaded");
-}
 //disply car
 function CarStatus(isVacant, CarId) {
     console.log("inside CarStatus");
@@ -41,13 +38,13 @@ $(document).ready(function () {
 
     for (let j = 1; j < 10; j++) {
         if (j == 4) { continue; }
-        let value = document.getElementById(j).value;
+        let isVacant = document.getElementById(j).value;
 
-        if (value != null) {
+        if (isVacant != null) {
             let ImgId = '#S' + j;
             console.log("ImgId = " + ImgId);
-            console.log(value);
-            CarStatus(value, ImgId);
+            console.log(isVacant);
+            CarStatus(isVacant, ImgId);
         }
     }
 })
